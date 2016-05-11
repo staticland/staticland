@@ -1,0 +1,45 @@
+{
+  "name": "staticland",
+  "version": "1.0.0",
+  "description": "Publish static sites",
+  "main": "index.js",
+  "bin": {
+    "staticland": "cli.js"
+  },
+  "scripts": {
+    "deps": "dependency-check . && dependency-check . --unused --no-dev",
+    "lint": "standard",
+    "test:testron": "browserify index.js | testron | tap-spec",
+    "test:node": "tape tests/*.js | tap-spec",
+    "test": "npm run deps && npm run lint && npm run test:node && npm run test:testron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staticland/staticland.git"
+  },
+  "keywords": [
+    "static",
+    "sites",
+    "static"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/staticland/staticland/issues"
+  },
+  "homepage": "https://github.com/staticland/staticland#readme",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "dependency-check": "^2.5.1",
+    "electron-prebuilt": "^0.37.8",
+    "standard": "^7.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1",
+    "testron": "^1.2.0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "request": "^2.72.0",
+    "tar-fs": "^1.12.0"
+  }
+}
