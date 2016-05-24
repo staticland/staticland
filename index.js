@@ -1,25 +1,31 @@
-var request = require('request')
+var req = require('request')
 
-module.exports = function staticlandClient (options) {
+module.exports = function staticlandAPIClient (options) {
   var client = {}
   client.server = options.server || 'https://api.static.land'
 
-  client.deploy = function staticlandClient_deploy (tarstream, headers, callback) {
-    var req = request.post({ url: client.server, headers: headers })
+  client.deploy = function (tarstream, headers, callback) {
+    var opts = { url: client.server + '/sites', headers: headers, method: 'POST' }
+    var stream = request(opts, callback)
+    tarstream.pipe(stream)
+  }
 
-    req.on('error', function (err) {
-      callback(err)
+  client.login = function (opts, callback) {
+    var baseurl = client.server + '/auth/verify'
+    var fullurl = baseurl + '?email=' + opts.email + '&password=' + opts.password
+    request({ url: fullurl, json: true, method: 'POST' }, callback)
+  }
+
+  client.owner = function (opts, callback) {
+    
+  }
+
+  function request (opts, callback) {
+    return req(opts, function (err, res, body) {
+      if (err) return callback(err)
+      if (res.statusCode >= 400) return callback(body)
+      return callback(null, res, body)
     })
-
-    req.on('response', function (response, body) {
-      // TODO: log response
-    })
-
-    req.on('end', function () {
-      callback()
-    })
-
-    tarstream.pipe(req)
   }
 
   return client
