@@ -3,15 +3,14 @@ var config = require('../lib/config')()
 var error = require('../lib/error')
 
 module.exports = {
-  name: 'login',
+  name: 'register',
   command: function login (args) {
     if (!args.email) error('email is required')
-    if (!args.password) error('password is required')
     var server = args.server || 'https://api.static.land'
     server = addhttps(server)
     var api = require('../index')(args)
 
-    api.login(args, function (err, res, body) {
+    api.register(args, function (err, res, body) {
       if (err) return error(err.message)
       body.server = server
       body.email = args.email

@@ -9,9 +9,7 @@
   "scripts": {
     "deps": "dependency-check . && dependency-check . --unused --no-dev",
     "lint": "standard",
-    "test:testron": "browserify index.js | testron | tap-spec",
-    "test:node": "tape tests/*.js | tap-spec",
-    "test": "npm run deps && npm run lint && npm run test:node && npm run test:testron"
+    "test": "NODE_ENV=test npm run deps && npm run lint && tape tests/*.js | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -38,13 +36,12 @@
     "testron": "^1.2.0"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
     "exit": "^0.1.2",
     "is-number": "^2.1.0",
     "is-string": "^1.0.4",
-    "minimist": "^1.2.0",
     "os-homedir": "^1.0.1",
     "request": "^2.72.0",
-    "single-line-log": "^1.1.1",
     "subcommand": "^2.0.3",
     "tar-fs": "^1.12.0"
   }

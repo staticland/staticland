@@ -1,22 +1,22 @@
 #! /usr/bin/env node
 
 var subcommand = require('subcommand')
-var help = require('./commands/help')
 var config = require('./lib/config')()
-
 config.init()
 
 var match = subcommand({
-  root: help,
-  none: help.command,
+  root: require('./commands/root'),
   defaults: require('./commands/defaults')(config.read()),
+  none: require('./commands/deploy-shorthand'),
   commands: [
-    help,
+    require('./commands/help'),
     require('./commands/config'),
     require('./commands/deploy'),
     require('./commands/login'),
     require('./commands/logout'),
     require('./commands/owner'),
+    require('./commands/register'),
+    require('./commands/server'),
     require('./commands/whoami')
   ]
 })
