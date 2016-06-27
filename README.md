@@ -17,13 +17,13 @@ Publish static sites with this command-line tool & API client for [static.land](
 ## Deploying sites
 Set up a [staticland API server](https://github.com/staticland/staticland-api):
 
-Login to a staticland server:
+Create an account on a staticland server:
 
 ```
-  staticland login \
+  staticland register \
     --email wat@static.land \
     --password thisisnotapassword \
-    --server https://api.static.land
+    --server your.staticlandserver.com
 ```
 
 One command to deploy a site with SSL:
