@@ -5,37 +5,35 @@ var tar = require('tar-fs')
 var exit = require('exit')
 
 var staticland = require('../index')
+var addhttps = require('../lib/add-https')
 var config = require('../lib/config')()
 var error = require('../lib/error')
 
 module.exports = {
   name: 'deploy',
   command: function deploy (args) {
-    var api = staticland({ server: args.server })
     var domain = args.domain
-    var source = path.join(process.cwd(), args.source)
-    var token = config.getLogin(args.server).token
+    var source = path.join(process.cwd(), args.path)
+    var login = config.getLogin()
+    var server = addhttps(args.server || login.server)
+    var api = staticland({ server: server })
+    var token = login.token
     var tarstream = tar.pack(source)
     var headers = { domain: domain, authorization: `Bearer ${token}` }
 
     api.deploy(tarstream, headers, function (err, res, body) {
       if (err) return error(err)
-      body = JSON.parse(body)
-      if (body.token) {
-        // then this was the first deploy, and we need to update the token
-        var login = config.get('currentLogin')
-        login.token = body.token
-        config.setLogin(login)
-      }
+      // TODO: show progress/completion
+      // body = JSON.parse(body)
     })
   },
   options: [
     {
-      name: 'source',
-      abbr: 's',
+      name: 'path',
+      abbr: 'p',
       boolean: false,
-      default: null,
-      help: 'The directory with your built static site'
+      default: '.',
+      help: 'The path to your built static site'
     },
     {
       name: 'domain',

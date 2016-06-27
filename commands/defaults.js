@@ -1,14 +1,16 @@
 module.exports = function defaults (config) {
   var server
+
   if (config.currentLogin) {
     server = config.currentLogin.server
+  } else {
+    server = 'https://api.static.land'
   }
 
   return [{
     name: 'server',
     abbr: 's',
-    boolean: false,
-    default: server || 'https://api.static.land',
+    default: server,
     help: 'The server that will host your site'
   }]
 }
