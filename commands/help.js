@@ -10,6 +10,7 @@ var usage = `
     password,  change your password on a staticland server
     server,    switch between staticland servers you've logged in to
     whoami,    show which user you're using on which staticland server
+    domain,    check if domain dns is correctly set up with a staticland server
     help,      show this help message
 
   DEPLOY

@@ -12,6 +12,7 @@ var match = subcommand({
     require('./commands/help'),
     require('./commands/config'),
     require('./commands/deploy'),
+    require('./commands/domain'),
     require('./commands/login'),
     require('./commands/logout'),
     require('./commands/owner'),
