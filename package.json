@@ -36,8 +36,8 @@
     "testron": "^1.2.0"
   },
   "dependencies": {
-    "base-64": "^0.1.0",
     "exit": "^0.1.2",
+    "ignore-file": "^1.1.2",
     "is-number": "^2.1.0",
     "is-string": "^1.0.4",
     "os-homedir": "^1.0.1",
