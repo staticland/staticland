@@ -20,9 +20,10 @@ module.exports = {
     var api = staticland({ server: server })
     var token = login.token
 
-    var filter = ignore.sync(path.join(source, '.npmignore'))
-      || ignore.sync(path.join(source, '.gitignore'))
-      || ignore.compile(path.join(source, 'node_modules'))
+    var filter = ignore.compile(`
+    .git
+    node_modules
+    `)
 
     var tarstream = tar.pack(source, { ignore: filter })
     var headers = { domain: domain, authorization: `Bearer ${token}` }

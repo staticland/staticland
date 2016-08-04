@@ -44,12 +44,16 @@ module.exports = function staticlandAPIClient (config) {
   client.owner = function (opts, callback) {
     if (!opts.domain) return callback(new Error('domain option is required'))
     if (!opts.email) return callback(new Error('domain email is required'))
+    var headers = { authorization: `Bearer ${opts.token}` }
 
     return request({
       method: 'POST',
       url: client.server + '/sites/' + opts.domain + '/owner',
+      headers: headers,
       json: {
-        email: opts.email
+        token: opts.token,
+        owner: opts.email,
+        domain: opts.domain
       }
     }, callback)
   }
