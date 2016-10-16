@@ -15,23 +15,29 @@ Publish static sites with this command-line tool & API client for [static.land](
 - The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.
 
 ## Deploying sites
-Set up a [staticland API server](https://github.com/staticland/staticland-api):
+Set up a [staticland API server](https://github.com/staticland/staticland-api) or use https://static.land.
 
-Create an account on a staticland server:
+Create an account on static.land:
 
-```
-  staticland register \
-    --email wat@static.land \
-    --password thisisnotapassword \
-    --server your.staticlandserver.com
+```sh
+staticland register
 ```
 
-One command to deploy a site with SSL:
+Use `--server yourstaticlandserver.com` to use a custom server.
 
+Ensure that your domain's DNS settings are pointing at `52.39.104.182` (or the IP address of your custom server) before deploying:
+
+```sh
+host static.land
+static.land has address 52.39.104.182
 ```
-  staticland deploy \
-    --source /path/to/site \
-    --domain example.com
+
+Setting the DNS before deploying is required for Let's Encrypt to successfully provision a certificate.
+
+Deploy a site with auto-SSL:
+
+```sh
+staticland path/to/site/ example.com
 ```
 
 ## Install
@@ -58,13 +64,18 @@ COMMANDS:
   help,      show this help message
 
 DEPLOY
+  staticland site/ example.com
+OR:
   staticland deploy --path site/ --domain example.com --server api.static.land
 
 HELP
   staticland help
 
+REGISTER
+  staticland register
+
 LOGIN
-  staticland login --email hi@example.com --password sosecret --server api.static.land
+  staticland login
 
 SERVER
   staticland server api.static.land
