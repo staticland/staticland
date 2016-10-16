@@ -1,4 +1,3 @@
-var config = require('../lib/config')()
 var pkg = require('../package.json')
 var help = require('./help')
 

@@ -1,8 +1,5 @@
-var fs = require('fs')
-var zlib = require('zlib')
 var path = require('path')
 var tar = require('tar-fs')
-var exit = require('exit')
 var ignore = require('ignore-file')
 
 var staticland = require('../index')
@@ -29,7 +26,7 @@ module.exports = {
     var headers = { domain: domain, authorization: `Bearer ${token}` }
 
     api.deploy(tarstream, headers, function (err, res, body) {
-      if (err) return error(err)
+      if (err) return error(err.message)
       // TODO: show progress/completion
       // body = JSON.parse(body)
     })

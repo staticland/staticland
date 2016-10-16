@@ -31,6 +31,7 @@ module.exports = {
     prompt.start()
 
     prompt.get(opts, function (err, results) {
+      if (err) return error(err.message)
       args.email = args.email || results.email
       args.password = args.password || results.password
       login(args)

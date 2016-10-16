@@ -13,7 +13,10 @@ module.exports = {
     }
 
     getIP(hostname, function (err, domainIP) {
+      if (err) return error(err.message)
+
       getIP(server.hostname, function (err, serverIP) {
+        if (err) return error(err.message)
         if (domainIP === serverIP) {
           ready({
             hostname: hostname,
