@@ -1,3 +1,5 @@
+var prompt = require('prompt')
+
 var addhttps = require('../lib/add-https')
 var config = require('../lib/config')()
 var error = require('../lib/error')
@@ -5,18 +7,43 @@ var error = require('../lib/error')
 module.exports = {
   name: 'login',
   command: function login (args) {
-    if (!args.email) error('email is required')
-    if (!args.password) error('password is required')
     var server = args.server || 'https://api.static.land'
     server = addhttps(server)
     var api = require('../index')(args)
+    var opts = []
 
-    api.login(args, function (err, res, body) {
-      if (err) return error(err.message)
-      body.server = server
-      body.email = args.email
-      config.setLogin(body)
+    if (!args.username) {
+      opts.push({
+        name: 'email',
+        required: true
+      })
+    }
+
+    opts.push({
+      name: 'password',
+      required: true,
+      hidden: true,
+      replace: '*'
     })
+
+    prompt.message = ''
+    prompt.colors = false
+    prompt.start()
+
+    prompt.get(opts, function (err, results) {
+      args.email = args.email || results.email
+      args.password = args.password || results.password
+      login(args)
+    })
+
+    function login (args) {
+      api.login(args, function (err, res, body) {
+        if (err) return error(err.message)
+        body.server = server
+        body.email = args.email
+        config.setLogin(body)
+      })
+    }
   },
   options: [
     {
