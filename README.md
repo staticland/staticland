@@ -2,19 +2,37 @@
 
 Publish static sites with this command-line tool & API client for [static.land](http://static.land)
 
-## Features
+[![npm][npm-image]][npm-url]
+[![travis][travis-image]][travis-url]
+[![standard][standard-image]][standard-url]
+[![conduct][conduct]][conduct-url]
+
+[npm-image]: https://img.shields.io/npm/v/staticland.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/staticland
+[travis-image]: https://img.shields.io/travis/staticland/staticland.svg?style=flat-square
+[travis-url]: https://travis-ci.org/sethvincent/staticland
+[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
+[standard-url]: http://npm.im/standard
+[conduct]: https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-green.svg?style=flat-square
+[conduct-url]: CONDUCT.md
+
+## About
+
+The `staticland` command-line tool is used to publish static sites to [static.land](https://static.land) and [self-hosted instances of staticland-api](https://github.com/staticland/staticland-api).
+
+### Features
 - One command to deploy a site.
 - Automatic SSL using Let's Encrypt.
 - Use any static site generator.
 - Host it yourself. Use it how you want.
 
-## Limitations
+### Limitations
 - DNS records must be set up and propogated before deploying a site for the first time.
 - Setting aliases or redirects is not currently supported.
 - By default the server admin must explicitly give access to users. This will be optional in future releases.
 - The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.
 
-## Deploying sites
+### Deploying sites
 Set up a [staticland API server](https://github.com/staticland/staticland-api) or use https://static.land.
 
 Create an account on static.land:
@@ -40,11 +58,19 @@ Deploy a site with auto-SSL:
 staticland path/to/site/ example.com
 ```
 
+The above command is a shorthand version of the `deploy` command, and works the same as this example:
+
+```sh
+staticland deploy path/to/site/ example.com
+```
+
 ## Install
 
 ```
 npm i -g staticland
 ```
+
+`staticland` requires Node.js and npm. [Install Node.js if you haven't already](https://nodejs.org).
 
 ## Usage
 
@@ -84,5 +110,26 @@ WHOAMI
   staticland whoami
 ```
 
+
+## Contributing
+
+Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) first.
+
+## Conduct
+
+It's important that this project contributes to a friendly, safe, and welcoming environment for all, particularly for folks that are historically underrepresented in technology. Read this project's [code of conduct](CONDUCT.md)
+
+## Change log
+
+Read about the changes to this project in [CHANGELOG.md](CHANGELOG.md). The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## Contact
+
+- **chat** – You can chat about this project at [gitter.im/staticland/staticland](http://gitter.im/staticland/staticland)
+- **issues** – Please open issues in the [issues queue](https://github.com/staticland/staticland/issues)
+- **twitter** – [@sethdvincent](https://twitter.com/sethdvincent)
+- **email** – Need in-depth support via paid contract? Send an email to sethvincent@gmail.com
+
 ## License
+
 [MIT](LICENSE.md)
