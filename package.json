@@ -7,9 +7,12 @@
     "staticland": "cli.js"
   },
   "scripts": {
-    "deps": "dependency-check . && dependency-check . --unused --no-dev",
+    "deps": "dependency-check . && dependency-check . --unused --no-dev && ncu",
+    "docs:api": "documentation build index.js -f md -o docs/API.md",
+    "docs:build": "npm run docs:api",
     "lint": "standard",
-    "test": "NODE_ENV=test npm run deps && npm run lint && tape tests/*.js | tap-spec"
+    "test:no-lint": "node tests/*.js | tap-spec",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",

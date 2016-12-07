@@ -8,7 +8,6 @@ module.exports = function staticlandAPIClient (config) {
     var opts = { url: client.server + '/sites', headers: headers, method: 'POST' }
     var stream = request(opts, function (err, res, body) {
       if (err) return callback(err)
-      if (res.statusCode >= 400) return callback(body)
       callback(null, res, body)
     })
     tarstream.pipe(stream)
