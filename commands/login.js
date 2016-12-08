@@ -39,7 +39,7 @@ module.exports = {
 
     function login (args) {
       api.login(args, function (err, res, body) {
-        if (err) return error(body.message)
+        if (err) return error(err.message)
         body.server = server
         body.email = args.email
         config.setLogin(body)
