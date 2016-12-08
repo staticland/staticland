@@ -77,7 +77,7 @@ module.exports = function staticlandAPIClient (config) {
 
   function request (opts, callback) {
     return req(opts, function (err, res, body) {
-      body = (typeof body === 'string') ? JSON.parse(body || '') : body 
+      body = (typeof body === 'string') ? JSON.parse(body || '') : body
       if (err) return callback(err)
       if (res.statusCode >= 400) return callback(body)
       return callback(null, res, body)

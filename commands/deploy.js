@@ -1,4 +1,3 @@
-var path = require('path')
 var tar = require('tar-fs')
 var ignore = require('ignore-file')
 
@@ -19,7 +18,7 @@ module.exports = {
     var server = addhttps(args.server || login.server)
     var api = staticland({ server: server })
     var token = login.token
-    
+
     if (args.exclude) {
       args.exclude = typeof args.exclude === 'string' ? args.exclude : args.exclude.join('\n')
       ignoreList = ignoreList.concat(args.exclude)
