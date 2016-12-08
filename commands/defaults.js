@@ -12,5 +12,11 @@ module.exports = function defaults (config) {
     abbr: 's',
     default: server,
     help: 'The server that will host your site'
+  },
+  {
+    name: 'exclude',
+    abbr: 'e',
+    boolean: false,
+    help: 'list of files and directories you want to exclude from the deployment'
   }]
 }
