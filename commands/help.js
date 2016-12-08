@@ -17,11 +17,16 @@ DEPLOY
   staticland deploy site/ example.com
 
   Options:
+  -e, --exclude   exclude specific files and diectories
   -s, --server    Specify a server to use instead of the hosted version at static.land
 
   You can drop the "deploy" subcommand for a shortened version:
 
     staticland site/ example.com
+
+  To exclude file and directories:
+
+    staticland site/ example.com -e bigfile.pdf -e secret.txt -e dir/of/super/big/files/
 
 HELP
   staticland help
