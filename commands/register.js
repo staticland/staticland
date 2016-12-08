@@ -39,7 +39,7 @@ module.exports = {
 
     function register (args) {
       api.register(args, function (err, res, body) {
-        if (err) return error(err.message)
+        if (err) return error(body.message)
         body.server = server
         body.email = args.email
         config.setLogin(body)

@@ -29,7 +29,7 @@ module.exports = {
     var headers = { domain: domain, authorization: `Bearer ${token}` }
 
     api.deploy(tarstream, headers, function (err, res, body) {
-      if (err) return error(err.message)
+      if (err) return error(body.message)
       // TODO: show progress/completion
       // body = JSON.parse(body)
     })

@@ -14,7 +14,7 @@ module.exports = {
     args.token = current.token
 
     api.owner(args, function (err, res, body) {
-      if (err) return error(err.message)
+      if (err) return error(body.message)
       console.log(body)
     })
   },
