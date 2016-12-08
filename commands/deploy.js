@@ -37,7 +37,7 @@ module.exports = {
       else if (err) return error(err.message)
 
       // TODO: show progress/completion
-      console.log('domain ' + domain + ' successfully deployed')
+      console.log('domain ' + args.domain + ' successfully deployed')
     })
   },
   options: [
