@@ -22,6 +22,9 @@ module.exports = {
     node_modules
     `)
 
+    args.path = args.path || args._[0]
+    args.domain = args.domain || args._[1]
+
     var tarstream = tar.pack(source, { ignore: filter })
     var headers = { domain: domain, authorization: `Bearer ${token}` }
 
