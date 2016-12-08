@@ -33,7 +33,9 @@ module.exports = {
     var headers = { domain: args.domain, authorization: `Bearer ${token}` }
 
     api.deploy(tarstream, headers, function (err, res, body) {
-      if (err) return error(err.message)
+      if (err && err.message === 'socket hang up') {}
+      else if (err) return error(err.message)
+
       // TODO: show progress/completion
       console.log('domain ' + body.site.domain + ' successfully deployed')
     })
