@@ -14,9 +14,14 @@ COMMANDS:
   help,      show this help message
 
 DEPLOY
-  staticland site/ example.com
-OR:
-  staticland deploy --path site/ --domain example.com --server api.static.land
+  staticland deploy site/ example.com
+
+  Options:
+  -s, --server    Specify a server to use instead of the hosted version at static.land
+
+  You can drop the "deploy" subcommand for a shortened version:
+
+    staticland site/ example.com
 
 HELP
   staticland help
@@ -32,6 +37,7 @@ SERVER
 
 WHOAMI
   staticland whoami
+
 `
 
 module.exports = {

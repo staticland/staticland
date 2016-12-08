@@ -15,7 +15,6 @@ node_modules
 module.exports = {
   name: 'deploy',
   command: function deploy (args) {
-    var source = path.join(process.cwd(), args.path)
     var login = config.getLogin()
     var server = addhttps(args.server || login.server)
     var api = staticland({ server: server })
@@ -28,8 +27,8 @@ module.exports = {
 
     var filter = ignore.compile(ignoreList)
 
-    args.path = args.path || args._[0]
-    args.domain = args.domain || args._[1]
+    args.path = args._[0]
+    args.domain = args._[1]
 
     var tarstream = tar.pack(args.path, { ignore: filter })
     var headers = { domain: args.domain, authorization: `Bearer ${token}` }
@@ -37,23 +36,10 @@ module.exports = {
     api.deploy(tarstream, headers, function (err, res, body) {
       if (err) return error(err.message)
       // TODO: show progress/completion
-      // body = JSON.parse(body)
+      console.log('domain ' + body.site.domain + ' successfully deployed')
     })
   },
   options: [
-    {
-      name: 'path',
-      abbr: 'p',
-      boolean: false,
-      default: '.',
-      help: 'The path to your built static site'
-    },
-    {
-      name: 'domain',
-      abbr: 'd',
-      boolean: false,
-      help: 'The domain of your site. Make sure the DNS already points to the staticland server before deploying if not using a subdomain of the server\'s domain'
-    },
     {
       name: 'exclude',
       abbr: 'e',
