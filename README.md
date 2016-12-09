@@ -24,13 +24,11 @@ The `staticland` command-line tool is used to publish static sites to [static.la
 - One command to deploy a site.
 - Automatic SSL using Let's Encrypt.
 - Use any static site generator.
-- Host it yourself. Use it how you want.
+- Open source & MIT-licensed. Host it yourself to use it how you want.
 
 ### Limitations
 - DNS records must be set up and propogated before deploying a site for the first time.
 - Setting aliases or redirects is not currently supported.
-- By default the server admin must explicitly give access to users. This will be optional in future releases.
-- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.
 
 ### Deploying sites
 Set up a [staticland API server](https://github.com/staticland/staticland-api) or use https://static.land.
@@ -79,15 +77,15 @@ USAGE:
   staticland {command} [options]
 
 COMMANDS:
-  register,  create an account on a staticland server
-  login,     log in to a staticland server
-  logout,    log out of a staticland server
-  deploy,    deploy a static site to a staticland server
-  password,  change your password on a staticland server
-  server,    switch between staticland servers you've logged in to
-  whoami,    show which user you're using on which staticland server
-  domain,    check if domain dns is correctly set up with a staticland server
-  help,      show this help message
+  register    create an account on a staticland server
+  login       log in to a staticland server
+  logout      log out of a staticland server
+  deploy      deploy a static site to a staticland server
+  password    change your password on a staticland server
+  server      switch between staticland servers you've logged in to
+  whoami      show which user you're using on which staticland server
+  domain      check if domain dns is correctly set up with a staticland server
+  help        show this help message
 
 DEPLOY
   staticland deploy site/ example.com
