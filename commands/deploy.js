@@ -33,8 +33,13 @@ module.exports = {
     var headers = { domain: args.domain, authorization: `Bearer ${token}` }
 
     api.deploy(tarstream, headers, function (err, res, body) {
-      if (err && err.message === 'socket hang up') {}
-      else if (err) return error(err.message)
+      if (err && err.message === 'socket hang up') {
+        // ignore (TODO: figure out why deploys work but socket hang up still happens)
+      } else if (err && err.message === 'Authorization failed') {
+        return error('Your authentication token has expired. Please log in again using `staticland login`')
+      } else if (err) {
+        return error(err.message)
+      }
 
       // TODO: show progress/completion
       console.log('domain ' + args.domain + ' successfully deployed')
