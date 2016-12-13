@@ -33,7 +33,6 @@ module.exports = {
     var headers = { domain: args.domain, authorization: `Bearer ${token}` }
 
     api.deploy(tarstream, headers, function (err, res, body) {
-      console.log('err', err)
       if (err && err.message === 'socket hang up') {
         // ignore (TODO: figure out why deploys work but socket hang up still happens)
       } else if (err && err.message === 'Authorization failed') {
