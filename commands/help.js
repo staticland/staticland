@@ -17,7 +17,7 @@ DEPLOY
   staticland deploy site/ example.com
 
   Options:
-  -e, --exclude   exclude specific files and diectories
+  -e, --exclude   exclude specific files and directories
   -s, --server    Specify a server to use instead of the hosted version at static.land
 
   You can drop the "deploy" subcommand for a shortened version:
