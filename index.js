@@ -28,6 +28,28 @@ module.exports = function staticlandAPIClient (config) {
     }, callback)
   }
 
+  client.site = function (opts, callback) {
+    if (!opts.domain) return callback(new Error('domain property is required'))
+
+    return request({
+      method: 'GET',
+      url: client.server + '/sites/' + opts.domain,
+      json: true
+    }, callback)
+  }
+
+  client.destroySite = function (opts, callback) {
+    if (!opts.domain) return callback(new Error('domain property is required'))
+    var headers = { authorization: `Bearer ${opts.token}` }
+
+    return request({
+      method: 'DELETE',
+      url: client.server + '/sites/' + opts.domain,
+      headers: headers,
+      json: true
+    }, callback)
+  }
+
   client.register = function (opts, callback) {
     if (!opts.password) return callback(new Error('password property is required'))
     if (!opts.email) return callback(new Error('email property is required'))
