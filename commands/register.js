@@ -7,8 +7,7 @@ var error = require('../lib/error')
 module.exports = {
   name: 'register',
   command: function login (args) {
-    var server = args.server || 'https://api.static.land'
-    server = addhttps(server)
+    args.server = addhttps(args.server || 'https://api.static.land')
     var api = require('../index')(args)
     var opts = []
 
@@ -40,7 +39,7 @@ module.exports = {
     function register (args) {
       api.register(args, function (err, res, body) {
         if (err) return error(err.message)
-        body.server = server
+        body.server = args.server
         body.email = args.email
         config.setLogin(body)
       })
