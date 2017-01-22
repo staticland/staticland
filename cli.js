@@ -17,6 +17,7 @@ var match = subcommand({
     require('./commands/logout'),
     require('./commands/owner'),
     require('./commands/register'),
+    require('./commands/reset-password'),
     require('./commands/server'),
     require('./commands/whoami')
   ]
