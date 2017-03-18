@@ -157,11 +157,11 @@ module.exports = function staticlandAPIClient (config) {
       body = (typeof body === 'string' && body.length) ? JSON.parse(body || '') : body
 
       if (err) {
-        return callback(err)
+        return callback(err, res)
       } else if (typeof body === 'string' && !body.length) {
-        return callback(new Error('Authorization failed'))
+        return callback(new Error('Authorization failed'), res)
       } else if (res.statusCode >= 400) {
-        return callback(body)
+        return callback(body, res)
       } else {
         return callback(null, res, body)
       }

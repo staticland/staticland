@@ -1,5 +1,6 @@
 var url = require('url')
 var dns = require('dns')
+var exit = require('exit')
 var error = require('../lib/error')
 
 module.exports = {
@@ -47,6 +48,7 @@ function notReady (opts) {
   FAILED!
     Domain not ready to deploy to ${opts.serverHostname}. Currently at IP ${opts.domainIP}.
   `)
+  exit(75)
 }
 
 function getIP (hostname, callback) {

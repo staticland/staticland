@@ -11,19 +11,25 @@ module.exports = {
     var api = require('../index')(args)
     var opts = []
 
-    if (!args.username) {
+    if (!args.email) {
       opts.push({
         name: 'email',
         required: true
       })
     }
+    
+    if (!args.password) {
+      opts.push({
+        name: 'password',
+        required: true,
+        hidden: true,
+        replace: '*'
+      })
+    }
 
-    opts.push({
-      name: 'password',
-      required: true,
-      hidden: true,
-      replace: '*'
-    })
+    if (args.username && args.password) {
+      return login(args)
+    }
 
     prompt.message = ''
     prompt.colors = false
