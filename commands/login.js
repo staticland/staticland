@@ -17,7 +17,7 @@ module.exports = {
         required: true
       })
     }
-    
+
     if (!args.password) {
       opts.push({
         name: 'password',
