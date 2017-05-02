@@ -1,6 +1,6 @@
 # staticland
 
-Publish static sites with this command-line tool & API client for [static.land](http://static.land)
+Publish static sites with this command-line tool & API client for [static.land](https://static.land)
 
 [![npm][npm-image]][npm-url]
 [![travis][travis-image]][travis-url]
@@ -12,7 +12,7 @@ Publish static sites with this command-line tool & API client for [static.land](
 [travis-image]: https://img.shields.io/travis/staticland/staticland.svg?style=flat-square
 [travis-url]: https://travis-ci.org/sethvincent/staticland
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
-[standard-url]: http://npm.im/standard
+[standard-url]: https://npm.im/standard
 [conduct]: https://img.shields.io/badge/code%20of%20conduct-contributor%20covenant-green.svg?style=flat-square
 [conduct-url]: CONDUCT.md
 
@@ -133,7 +133,7 @@ Read about the changes to this project in [CHANGELOG.md](CHANGELOG.md). The form
 
 ## Contact
 
-- **chat** – You can chat about this project at [gitter.im/staticland/staticland](http://gitter.im/staticland/staticland)
+- **chat** – You can chat about this project at [gitter.im/staticland/staticland](https://gitter.im/staticland/staticland)
 - **issues** – Please open issues in the [issues queue](https://github.com/staticland/staticland/issues)
 - **twitter** – [@sethdvincent](https://twitter.com/sethdvincent)
 - **email** – Need in-depth support via paid contract? Send an email to sethvincent@gmail.com
